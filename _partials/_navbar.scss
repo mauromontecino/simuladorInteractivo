@@ -1,0 +1,30 @@
+.navbar {
+  background-color: #2a231f;
+  font-size: 1.2em;
+  z-index: 2;
+}
+
+.navbar-brand {
+  padding: 0;
+  img {
+    width: 125px;
+    height: 80px;
+  }
+}
+
+.bg-light {
+  --bs-bg-opacity: 0;
+}
+
+.nav-link {
+  color: rgb(121 77 47);
+  font-weight: 700;
+  --bs-nav-link-hover-color: rgb(211 195 167);
+  text-shadow: 1px 1px 1px black;
+}
+
+.navbar-toggler {
+  border: 2px solid rgb(121 77 47);
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  color: rgb(121 77 47);
+}
