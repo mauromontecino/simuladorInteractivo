@@ -38,13 +38,17 @@ for (const Item of productos) Item.productoNombPrec();
 
 console.log(productos);
 
-let precioDelProducto = parseInt(prompt("Ingresa su precio total"));
-
 //Lee el precio de los items
 
-for (const Item of productos) {
-  console.log(Item.precio);
-}
+let precioTotal = 0;
+let sumaPrec = productos;
+
+//Suma de arreglo
+
+sumaPrec.forEach(function (elemento, indice) {
+  precioTotal += elemento["precio"];
+});
+//console.log("El precio total es: $" + precioTotal);
 
 //Ejecución
 
@@ -60,7 +64,7 @@ do {
       tieneDescuento();
       break;
     case 2:
-      console.log("Este es el precio sin descuento $" + precioDelProducto);
+      console.log("Este es el precio sin descuento $" + precioTotal);
       break;
     case 3:
       alert("Hasta luego");
@@ -75,9 +79,8 @@ do {
 
 function tieneDescuento() {
   let porcentajeDeDescuento = parseInt(prompt("¿Cual es el % del descuento?"));
-  let porcentajeDeDescuento2 =
-    (porcentajeDeDescuento / 100) * precioDelProducto;
-  let precioFinal = precioDelProducto - porcentajeDeDescuento2;
+  let porcentajeDeDescuento2 = (porcentajeDeDescuento / 100) * precioTotal;
+  let precioFinal = precioTotal - porcentajeDeDescuento2;
   {
     if (precioFinal > 0) {
       console.log("Este es el precio con descuento $" + precioFinal);
