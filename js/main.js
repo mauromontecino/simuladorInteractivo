@@ -45,7 +45,7 @@ let sumaPrec = productos;
 
 //Suma de arreglo
 
-sumaPrec.forEach(function (elemento, indice) {
+sumaPrec.forEach((elemento) => {
   precioTotal += elemento["precio"];
 });
 //console.log("El precio total es: $" + precioTotal);
