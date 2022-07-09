@@ -1,0 +1,83 @@
+.chef h2 {
+  padding-top: 80px;
+  font-size: 3.5rem;
+  font-weight: 400;
+  color: #644024;
+  text-shadow: 1px 1px 1px black;
+  padding-bottom: 25px;
+}
+.container3 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0px 40px 0px 40px;
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+  article {
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+}
+
+article:hover {
+  transform: translateY(-15px);
+  filter: drop-shadow(0px 2px 20px rgba(0, 0, 0, 0.2));
+}
+
+/* CARD */
+
+.card-team {
+  background-color: white;
+  width: 23rem;
+  min-height: 20rem;
+  padding: 1rem;
+  border-radius: 10px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
+  margin-bottom: 2rem;
+}
+
+.profile {
+  text-align: center;
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  h3 {
+    text-transform: uppercase;
+    margin: 0;
+  }
+  p {
+    color: #c73a2f;
+    font-size: 1.125rem;
+    margin-top: 0;
+  }
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  li {
+    margin-left: 1rem;
+    font-size: 2rem;
+  }
+}
+
+.social li:first-child {
+  margin-left: 0;
+}
+
+.fa-instagram {
+  color: #000;
+}
+
+.fa-facebook {
+  color: #0274b3;
+}
+
+.fa-twitter {
+  color: #1da1f2;
+}

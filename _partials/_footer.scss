@@ -1,0 +1,18 @@
+footer {
+  background-color: #2a231f;
+  color: rgb(121 77 47);
+  h5 {
+    text-shadow: 1px 1px 1px black;
+  }
+}
+.btn-primary {
+  --bs-btn-bg: rgb(211 195 167) !important;
+}
+.border-top {
+  --bs-border-color: rgb(121 77 47);
+}
+
+.footerRow {
+  margin-left: 40px;
+  margin-right: 40px;
+}
