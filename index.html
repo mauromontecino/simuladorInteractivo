@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carta Restaurante</title>
+    <title>El Patio - Restaurant</title>
     <!--Icons-->
     <script
       src="https://kit.fontawesome.com/727f38cfdc.js"
@@ -54,12 +54,13 @@
               <a class="nav-link" aria-current="page" href="#">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Menu</a>
+              <a class="nav-link" href="#menuPrincipal">Menu</a>
             </li>
           </ul>
-          <button class="btn btn-outline-success" type="submit">
-            <i class="fa-solid fa-cart-shopping"></i>
+          <button class="btn" type="submit">
+            <a href="pages/compra.html"><i class="fa-solid fa-cart-shopping"><span class="cartNav">0</span></i></a>
           </button>
+          
         </div>
       </div>
     </nav>
@@ -67,7 +68,8 @@
       <div class="showcase-container">
         <h1 class="main-title"><strong>EL PATIO</strong></h1>
         <p>LA COMIDA QUE ALARGA LA VIDA</p>
-        <a href="#" class="btn btnPrincipal">Menu</a>
+        <div id="div-1"></div>
+        <a href="#menuPrincipal" class="btn btnPrincipal">Menu</a>
       </div>
     </section>
     <!--Fin Navbar-->
@@ -124,8 +126,9 @@
       <div class="container2">
         <div class="row productosZ">
           <div class="header text-center">
-            <h2>Mirá nuestro <strong>menú</strong></h2>
+            <h2 id="menuPrincipal">Mirá nuestro <strong>menú</strong></h2>
           </div>
+          <div id="productosJS"></div>
           <div class="menu">
             <div class="col-lg-12 d-flex justify-content-center">
               <ul>
@@ -509,5 +512,6 @@
     ></script>
     <!--JS-->
     <!--<script src="js/main.js"></script>-->
+    <script src="js/app.js"></script>
   </body>
 </html>

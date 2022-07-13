@@ -14,14 +14,6 @@ body {
 
 .btn {
   --bs-btn-color: rgb(121, 77, 47);
-  --bs-btn-border-color: rgb(121, 77, 47);
-  --bs-btn-hover-bg: rgb(211 195 167);
-  --bs-btn-hover-border-color: rgb(121, 77, 47);
-  --bs-btn-active-bg: rgb(121, 77, 47);
-  --bs-btn-active-border-color: rgb(121, 77, 47);
-  --bs-btn-disabled-color: rgb(121, 77, 47);
-  --bs-btn-focus-shadow-rgb: rgb(121 77 47);
-  --bs-btn-border-width: 2px;
   :hover {
     color: rgb(121, 77, 47);
   }

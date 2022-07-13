@@ -38,6 +38,20 @@
   }
 }
 
+.cartNav {
+  height: 20px;
+  line-height: 20px;
+  padding: 0 5px;
+  border-radius: 18px;
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  z-index: 5;
+  background-color: var(--bs-danger);
+  color: #fff;
+  top: -10px;
+}
+
 .showcase-area {
   height: 50vh;
   background: linear-gradient(rgba(240, 240, 240, 0.144), rgba(255, 255, 255, 0.336)), url("https://i.postimg.cc/wT3TQS3V/header-image2.jpg");
@@ -611,14 +625,6 @@ body {
 
 .btn {
   --bs-btn-color: rgb(121, 77, 47);
-  --bs-btn-border-color: rgb(121, 77, 47);
-  --bs-btn-hover-bg: rgb(211 195 167);
-  --bs-btn-hover-border-color: rgb(121, 77, 47);
-  --bs-btn-active-bg: rgb(121, 77, 47);
-  --bs-btn-active-border-color: rgb(121, 77, 47);
-  --bs-btn-disabled-color: rgb(121, 77, 47);
-  --bs-btn-focus-shadow-rgb: rgb(121 77 47);
-  --bs-btn-border-width: 2px;
 }
 .btn :hover {
   color: rgb(121, 77, 47);
