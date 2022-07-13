@@ -51,27 +51,6 @@
   transform: scale(1.2, 1.2) rotate(5deg);
 }
 
-.section-products #product-1 .part-1::before {
-  background: url(../img/4.jpg) no-repeat center;
-  background-size: cover;
-  transition: all 0.3s;
-}
-
-.section-products #product-2 .part-1::before {
-  background: url(../img/3.jpg) no-repeat center;
-  background-size: cover;
-}
-
-.section-products #product-3 .part-1::before {
-  background: url(../img/5.jpg) no-repeat center;
-  background-size: cover;
-}
-
-.section-products #product-4 .part-1::before {
-  background: url(../img/6.png) no-repeat center;
-  background-size: cover;
-}
-
 .section-products .single-product .part-1 .discount,
 .section-products .single-product .part-1 .new {
   position: absolute;
@@ -152,4 +131,14 @@
       transform: translateY(-50%);
     }
   }
+}
+
+.card-mod {
+  --bs-card-border-width: 0px;
+  width: 288px;
+  height: 446px;
+}
+
+.card-img-top {
+  border-radius: 10px;
 }
