@@ -25,6 +25,7 @@ for (const producto of productos) {
   //Definimos el innerHTML del elemento con una plantilla de texto
   contenedor.innerHTML = `<div id="product-2" class="single-product">
   <div class="part-1">
+  <img src="img/1.jpg" alt="">
     <span class="discount">15% descuento</span>
     <ul>
       <li>
