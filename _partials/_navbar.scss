@@ -49,3 +49,151 @@
   color: #fff;
   top: -10px;
 }
+
+//Carrito Span
+
+$main-color: #6394f8;
+$light-text: #abb0be;
+
+.lighter-text {
+  color: #abb0be;
+}
+
+.main-color-text {
+  color: $main-color;
+}
+
+.navbar-right {
+  float: right;
+  margin: 0;
+  @media (max-width: 1200px) {
+    float: none;
+  }
+  ul {
+    li {
+      display: inline;
+      padding-left: 20px;
+      bottom: 10px;
+
+      a {
+        color: #777777;
+        text-decoration: none;
+        &:hover {
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+.badge {
+  background-color: #6394f8;
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.shopping-cart {
+  margin: 10px 0;
+  float: right;
+  background: white;
+  right: 70px;
+  position: absolute;
+  border-radius: 3px;
+  padding: 15px;
+  display: none;
+  z-index: 2;
+  @media (max-width: 420px) {
+    right: 0px;
+  }
+  @media (min-width: 1200px) {
+    top: 70px;
+  }
+
+  .shopping-cart-header {
+    border-bottom: 1px solid #e8e8e8;
+
+    .shopping-cart-total {
+      float: right;
+    }
+  }
+
+  .shopping-cart-items {
+    padding-top: 20px;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 18px;
+      list-style-type: none;
+      list-style: none;
+    }
+
+    img {
+      float: left;
+      margin-right: 12px;
+    }
+
+    .item-name {
+      display: block;
+      padding-top: 10px;
+      font-size: 16px;
+    }
+
+    .item-price {
+      color: $main-color;
+      margin-right: 8px;
+    }
+
+    .item-quantity {
+      color: $light-text;
+    }
+  }
+}
+
+.shopping-cart:after {
+  bottom: 100%;
+  left: 80%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: white;
+  border-width: 8px;
+  margin-left: -8px;
+}
+
+.cart-icon {
+  color: #515783;
+  font-size: 24px;
+  margin-right: 7px;
+  float: left;
+}
+
+.button {
+  background: $main-color;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+  font-size: 24px;
+  margin: 25px 0 15px 0;
+
+  &:hover {
+    background: lighten($main-color, 3%);
+  }
+}
+
+.clearfix:after {
+  content: "";
+  clear: both;
+}

@@ -1,94 +1,181 @@
-//Pide el nombre
-nombre = prompt("Ingresa tu nombre:");
-
-//Cambia el encavezado
-document.getElementById(
-  "div-1"
-).innerHTML = `¡Hola! ${nombre}. Mirá nuestro Menú aqui abajo`;
-
-//Modifica texto de menu
-document.getElementById(
-  "menuPrincipal"
-).innerHTML = `${nombre} . Esto es lo que te recomendamos`;
-
-//ProductosJs
-
-const productos = [
-  {
-    id: 1,
-    imagen: "./img/3.jpg",
+//Productos
+const productos = {
+  producto1: {
     nombre: "Hamburguesa",
-    categoria: "Plato principal",
-    precio: 1200,
+    precio: "1200",
+    descripcion: "Hamburguesa simple.",
+    imagen: "./img/3.jpg",
+    alt: "Hamburguesa simple",
   },
-  {
-    id: 2,
-    imagen: "./img/12.jpg",
+  producto2: {
     nombre: "Hamburguesa con papas fritas",
-    categoria: "Plato principal",
-    precio: 1800,
+    precio: "1800",
+    descripcion: "Hamburguesa con una porción de papas fritas.",
+    imagen: "./img/12.jpg",
+    alt: "Hamburguesa con papas fritas",
   },
-  {
-    id: 3,
-    imagen: "./img/13.jpg",
-    nombre: "Hamburguesa con huevo",
-    categoria: "Plato principal",
-    precio: 1350,
-  },
-  {
-    id: 4,
-    imagen: "./img/14.jpg",
+  producto3: {
     nombre: "Pin de pollo",
-    categoria: "Entrada",
-    precio: 500,
+    precio: "500",
+    descripcion: "Pin de pollo con salsa barbacoa.",
+    imagen: "./img/14.jpg",
+    alt: "Pin de pollo",
   },
-  {
-    id: 5,
-    imagen: "./img/15.jpeg",
+  producto4: {
     nombre: "Canape clasico",
-    categoria: "Entrada",
-    precio: 500,
+    precio: "500",
+    descripcion: "Canape clasico de pollo, tomate, lechuga.",
+    imagen: "./img/15.jpeg",
+    alt: "Canape clasico",
   },
-  {
-    id: 6,
-    imagen: "./img/16.jpeg",
+  producto5: {
     nombre: "Carne al asador",
-    categoria: "Entrada",
-    precio: 800,
+    precio: "800",
+    descripcion: "Carne al asador",
+    imagen: "./img/16.jpeg",
+    alt: "Carne al asador",
   },
-  {
-    id: 7,
-    imagen: "./img/17.jpg",
+  producto6: {
     nombre: "Ensalada de lechuga y tomate",
-    categoria: "Acompañamiento",
-    precio: 300,
+    precio: "500",
+    descripcion: "Ensalada de lechuga y tomate.",
+    imagen: "./img/17.jpg",
+    alt: "Ensalada de lechuga y tomate",
   },
-];
+};
 
-const carrito = [];
+const plantillaProd = document.getElementById("template-prod").content;
+const contenedorProd = document.querySelector(".contenedor-productos");
+const fragment = document.createDocumentFragment();
 
-function productosTienda() {
-  let tienda = document.getElementById("productosJS");
+//Agregar productos al HTML
+Object.values(productos).forEach((producto) => {
+  plantillaProd.querySelector(".div-info .nombre-prod").textContent =
+    producto.nombre;
+  plantillaProd.querySelector(".div-precio-boton .precio").textContent =
+    producto.precio;
+  plantillaProd.querySelector(".div-info .descripcion-prod").textContent =
+    producto.descripcion;
+  plantillaProd
+    .querySelector(".contenedor-img img")
+    .setAttribute("alt", producto.alt);
+  plantillaProd
+    .querySelector(".contenedor-img img")
+    .setAttribute("src", producto.imagen);
+  const clonar = plantillaProd.cloneNode(true);
+  fragment.appendChild(clonar);
+});
+contenedorProd.appendChild(fragment);
 
-  let divProduct = document.createElement("div");
+//Compra carrito
+let carrito = {};
+const templateTabla = document.getElementById(
+  "agregar-producto-al-carro"
+).content;
+const tbodyCarrito = document.getElementById("carrito-body");
+const fragmentTabla = document.createDocumentFragment();
+const plantillaFooter = document.getElementById("tfooter").content;
+const tfootCarrito = document.getElementById("footer");
 
-  divProduct.classList.add("single-product");
+contenedorProd.addEventListener("click", (e) => {
+  if (e.target.textContent === "Agregar al carrito") {
+    setCarrito(e.target.parentElement.parentElement);
+  }
+  e.stopPropagation();
+});
+const setCarrito = (e) => {
+  const precCantProdCarrito = {
+    nombre: e.querySelector(".div-info .nombre-prod").textContent,
+    precio: e.querySelector(".div-precio-boton .precio").textContent,
+    cantidad: 1,
+  };
+  if (carrito.hasOwnProperty(precCantProdCarrito.nombre)) {
+    carrito[precCantProdCarrito.nombre].cantidad += 1;
+  } else {
+    carrito[precCantProdCarrito.nombre] = { ...precCantProdCarrito };
+  }
+  crearTabla(carrito);
+};
 
-  productos.forEach((product) => {
-    let productoHTML = `
-    <div class="card card-mod" style="width: 18rem;">
-    <div class="single-product">
-      <img class="card-img-top card-img-top-mod" src="${product.imagen}" alt="Card image cap" style="width: 262px; height: 262px">
-      <div class="card-body part-2">
-        <h3 class="card-title product-title">${product.nombre}</h3>
-        <h4 class="card-text">$${product.precio}</h4>
-        <br>
-        <a href="#" class="btn btn-primary">Agregar al carrito</a>
-      </div>
-    </div>
-  </div>
-`;
-    tienda.innerHTML += productoHTML;
+const crearTabla = (objetoCarrito) => {
+  Object.values(objetoCarrito).forEach((objeto) => {
+    const clonarTabla = templateTabla.cloneNode(true);
+    clonarTabla.getElementById("producto").textContent = objeto.nombre;
+    clonarTabla.getElementById("cant").textContent = objeto.cantidad;
+    clonarTabla.getElementById("precio-uni").textContent = "$" + objeto.precio;
+    let precioTotal = parseFloat(objeto.precio) * objeto.cantidad;
+    clonarTabla.getElementById("precio-total-prod").textContent =
+      "$" + precioTotal.toFixed(2);
+    fragmentTabla.appendChild(clonarTabla);
   });
+  tbodyCarrito.innerHTML = "";
+  tbodyCarrito.appendChild(fragmentTabla);
+  footerCarrito();
+};
+const footerCarrito = () => {
+  tfootCarrito.innerHTML = "";
+  if (Object.keys(carrito).length === 0) {
+    tfootCarrito.innerHTML =
+      "<tr><td colspan = 4>¡No hay ningun producto en el carrito!</td></tr>";
+  } else {
+    const total = Object.values(carrito).reduce(
+      (acc, { cantidad, precio }) => acc + cantidad * precio,
+      0
+    );
+    plantillaFooter.getElementById("total-a-pagar").textContent =
+      "$" + total.toFixed(2);
+    const clonarFooterCarrito = plantillaFooter.cloneNode(true);
+    fragment.appendChild(clonarFooterCarrito);
+    tfootCarrito.appendChild(fragment);
+    //Vaciar carrito boton
+    const botonVaciar = document.getElementById("vaciar-tabla");
+    botonVaciar.addEventListener("click", () => {
+      carrito = {};
+      crearTabla(carrito);
+      footerCarrito();
+    });
+  }
+};
+//Botones de cantidad (Aumentar y disminuir)
+tbodyCarrito.addEventListener("click", (e) => {
+  if (e.target.classList.contains("button")) {
+    aumentarDisminuir(e.target);
+  }
+});
+const aumentarDisminuir = (boton) => {
+  if (boton.textContent === "+") {
+    const btnAumDism =
+      boton.parentElement.parentElement.firstElementChild.textContent;
+    Object.values(carrito).forEach((e) => {
+      if (e.nombre === btnAumDism) {
+        carrito[e.nombre].cantidad++;
+      }
+    });
+  }
+  if (boton.textContent === "-") {
+    const btnAumDism =
+      boton.parentElement.parentElement.firstElementChild.textContent;
+    Object.values(carrito).forEach((e) => {
+      if (e.nombre === btnAumDism) {
+        carrito[e.nombre].cantidad--;
+        if (carrito[e.nombre].cantidad === 0) {
+          delete carrito[e.nombre];
+        }
+      }
+    });
+  }
+  crearTabla(carrito);
+  footerCarrito();
+};
+
+//Carrito hover
+function toggleCart() {
+  let y = document.querySelector(".shopping-cart");
+  let mostrar = getComputedStyle(y).getPropertyValue("display");
+  if (mostrar === "none") {
+    y.style.display = "block";
+    mostrar = "block";
+  } else {
+    y.style.display = "none";
+  }
 }
-productosTienda();
