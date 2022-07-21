@@ -68,7 +68,6 @@ Object.values(productos).forEach((producto) => {
 contenedorProd.appendChild(fragment);
 
 //Compra carrito
-let carrito = {};
 const templateTabla = document.getElementById(
   "agregar-producto-al-carro"
 ).content;
@@ -111,6 +110,7 @@ const crearTabla = (objetoCarrito) => {
   tbodyCarrito.innerHTML = "";
   tbodyCarrito.appendChild(fragmentTabla);
   footerCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 };
 const footerCarrito = () => {
   tfootCarrito.innerHTML = "";
@@ -133,9 +133,11 @@ const footerCarrito = () => {
       carrito = {};
       crearTabla(carrito);
       footerCarrito();
+      localStorage.setItem("carrito", JSON.stringify(carrito));
     });
   }
 };
+
 //Botones de cantidad (Aumentar y disminuir)
 tbodyCarrito.addEventListener("click", (e) => {
   if (e.target.classList.contains("button")) {
@@ -166,6 +168,7 @@ const aumentarDisminuir = (boton) => {
   }
   crearTabla(carrito);
   footerCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
 };
 
 //Carrito hover
@@ -179,3 +182,15 @@ function toggleCart() {
     y.style.display = "none";
   }
 }
+
+//LocalStorage
+
+let aux = localStorage.getItem("carrito");
+
+if (!aux) {
+  carrito = {};
+} else {
+  carrito = JSON.parse(aux);
+}
+
+//localStorage.setItem("carrito", JSON.stringify(carrito));
