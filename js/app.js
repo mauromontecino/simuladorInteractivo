@@ -195,6 +195,8 @@ let aux = localStorage.getItem("carrito");
 
 let carrito = JSON.parse(aux) || {};
 
+crearTabla(carrito);
+
 //!aux ? (carrito = {}) : (carrito = JSON.parse(aux));
 
 //localStorage.setItem("carrito", JSON.stringify(carrito));
