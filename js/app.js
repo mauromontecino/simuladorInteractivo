@@ -200,3 +200,54 @@ crearTabla(carrito);
 //!aux ? (carrito = {}) : (carrito = JSON.parse(aux));
 
 //localStorage.setItem("carrito", JSON.stringify(carrito));
+
+////////////////////////////////////////////////////////////////////////////////
+
+//Toastify Agregar al Carrito
+
+function successBtn() {
+  Toastify({
+    text: "¡Se agregó al carrito!",
+    duration: 1500,
+  }).showToast();
+}
+
+//Sweet Alert Vaciar Carrito
+
+function vaciarBtn() {
+  const swalWithBootstrapButtons = Swal.mixin({
+    customClass: {
+      confirmButton: "btn btn-success",
+      cancelButton: "btn btn-danger",
+    },
+    buttonsStyling: false,
+  });
+
+  swalWithBootstrapButtons
+    .fire({
+      title: "¿Estas seguro de vaciar el carrito?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Si, vaciar.",
+      cancelButtonText: "¡No, cancelar!",
+      reverseButtons: true,
+    })
+    .then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          "El carrito se vació.",
+          "Tu carrito ha sido vaciado",
+          "success"
+        );
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          "Cancelado",
+          "Tu carrito esta seguro :)",
+          "error"
+        );
+      }
+    });
+}

@@ -54,7 +54,7 @@
               <a class="nav-link" aria-current="page" href="../index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Menu</a>
+              <a class="nav-link" href="#menuPrincipal">Menu</a>
             </li>
           </ul>
           <!--Carrito-->
@@ -68,21 +68,59 @@
           </div>
         </nav>
         <!--Span carrito-->
-        <div>
+        <span>
           <div class="shopping-cart">
             <div class="shopping-cart-header">
               <i class="fa fa-shopping-cart cart-icon"></i>
               <div class="shopping-cart-total">
-                <span class="lighter-text">Total:</span>
-                <span id="totalCarrito" class="main-color-text">$</span>
+                <!--Tabla carrito prod-->
+                  <div class="tabla-calculo" id="tabla-calculo">
+                    <table class="tabla">
+                      <thead class="cabecera border-top-right">
+                        <tr>
+                          <th class="border-top-left">Producto</th>
+                          <th>Cant.</th>
+                          <th>$ Unidad</th>
+                          <th class="border-top-right">$ Total</th>
+                        </tr>
+                      </thead>
+                      <tbody id="carrito-body">
+                  
+                      </tbody>
+                      <tfoot id="footer">
+                        <tr><td class="border-bottom-left border-bottom-right" colspan = 4>¡No hay ningun producto en el carrito!</td></tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                  <!--Filas-->
+                  <template id="agregar-producto-al-carro">
+                    <tr>
+                          <td id="producto">Hamburguesa</td>
+                          <td><button id="menos-cantidad" class="button btnCarrito">-</button><span id="cant">1</span><button id='mas-cantidad' class="button btnCarrito">+</button></td>
+                          <td class="precio-tabla" id="precio-uni">$1200</td>
+                          <td class="precio-tabla" id="precio-total-prod">$1200</td>
+                        </tr>
+                  </template>
+                  <!--Footer tabla-->
+                  <div class="container">
+                    <template id="tfooter">
+                      <tr class="none">
+                        <td class="border-bottom-left"><button id="vaciar-tabla" class="button">Vaciar carrito</button></td>
+                        <td colspan="2" class="negrita">Precio Total</td>
+                        <td id="total-a-pagar" class="precio-tabla border-bottom-right negrita">$0</td>
+                      </tr>
+                      <a href="#" class="button">Comprar</a>
+                    </template>
+                  </div>
               </div>
               <br>
             </div>
-            <ul id="productosCarrito" class="shopping-cart-items">
+            <ul class="shopping-cart-items" id="carritoJS">
 
             </ul>
-            <a href="#" class="button">Comprar</a>
+
           </div>
+        </span>
       <!--Fin Navbar-->
     <!--Contenedor-->
     <div class="container">
