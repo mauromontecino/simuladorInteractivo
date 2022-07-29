@@ -1,5 +1,5 @@
 //Productos
-const productos = (data = {
+const productos = {
   producto1: {
     nombre: "Hamburguesa",
     precio: "1200",
@@ -42,7 +42,7 @@ const productos = (data = {
     imagen: "./img/17.jpg",
     alt: "Ensalada de lechuga y tomate",
   },
-});
+};
 
 const plantillaProd = document.getElementById("template-prod").content;
 const contenedorProd = document.querySelector(".contenedor-productos");
