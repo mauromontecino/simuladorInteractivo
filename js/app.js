@@ -1,5 +1,5 @@
 //Productos
-const productos = {
+const productos = (data = {
   producto1: {
     nombre: "Hamburguesa",
     precio: "1200",
@@ -42,7 +42,7 @@ const productos = {
     imagen: "./img/17.jpg",
     alt: "Ensalada de lechuga y tomate",
   },
-};
+});
 
 const plantillaProd = document.getElementById("template-prod").content;
 const contenedorProd = document.querySelector(".contenedor-productos");
@@ -77,7 +77,7 @@ const plantillaFooter = document.getElementById("tfooter").content;
 const tfootCarrito = document.getElementById("footer");
 
 contenedorProd.addEventListener("click", (e) => {
-  if (e.target.textContent === "Agregar al carrito") {
+  if (e.target.textContent === "🛒") {
     setCarrito(e.target.parentElement.parentElement);
   }
   e.stopPropagation();

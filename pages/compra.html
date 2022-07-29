@@ -58,39 +58,17 @@
             </li>
           </ul>
           <!--Carrito-->
-          <div>
-            <ul class="navbar-right">
-              <li id="contarCarrito">
-                <a href="#" id="cart"><text onclick=toggleCart() class="fa fa-shopping-cart"></a>
-              </li>
-            </ul>
-          </div>
           </div>
         </nav>
         <!--Span carrito-->
         <span>
           <div class="shopping-cart">
             <div class="shopping-cart-header">
-              <i class="fa fa-shopping-cart cart-icon"></i>
+  
               <div class="shopping-cart-total">
                 <!--Tabla carrito prod-->
                   <div class="tabla-calculo" id="tabla-calculo">
-                    <table class="tabla">
-                      <thead class="cabecera border-top-right">
-                        <tr>
-                          <th class="border-top-left">Producto</th>
-                          <th>Cant.</th>
-                          <th>$ Unidad</th>
-                          <th class="border-top-right">$ Total</th>
-                        </tr>
-                      </thead>
-                      <tbody id="carrito-body">
-                  
-                      </tbody>
-                      <tfoot id="footer">
-                        <tr><td class="border-bottom-left border-bottom-right" colspan = 4>¡No hay ningun producto en el carrito!</td></tr>
-                      </tfoot>
-                    </table>
+                    
                   </div>
                   <!--Filas-->
                   <template id="agregar-producto-al-carro">
@@ -99,17 +77,16 @@
                           <td><button id="menos-cantidad" class="button btnCarrito">-</button><span id="cant">1</span><button id='mas-cantidad' class="button btnCarrito">+</button></td>
                           <td class="precio-tabla" id="precio-uni">$1200</td>
                           <td class="precio-tabla" id="precio-total-prod">$1200</td>
+                          <hr>
                         </tr>
                   </template>
                   <!--Footer tabla-->
                   <div class="container">
                     <template id="tfooter">
                       <tr class="none">
-                        <td class="border-bottom-left"><button id="vaciar-tabla" class="button">Vaciar carrito</button></td>
-                        <td colspan="2" class="negrita">Precio Total</td>
-                        <td id="total-a-pagar" class="precio-tabla border-bottom-right negrita">$0</td>
+                        <td class="negrita">Precio Total</td>
+                        <td colspan="3" id="total-a-pagar" class="precio-tabla border-bottom-right negrita">$0</td>
                       </tr>
-                      <a href="#" class="button">Comprar</a>
                     </template>
                   </div>
               </div>
@@ -133,25 +110,28 @@
       <div class="row">
         <div class="col-md-6 order-md-2 mb-4">
           <h4 id="contarCarritoCompra" class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Tu carrito</span>
+            <span class="text-muted">Tu carrito <i class="fa fa-shopping-cart cart-icon"></i></span>
             
           </h4>
           <ul class="list-group mb-3" id="carritoJS">
-
+            <table class="tabla">
+              <thead class="cabecera border-top-right">
+                <tr>
+                  <th class="border-top-left">Producto</th>
+                  <th>Cant.</th>
+                  <th>$ Unidad</th>
+                  <th class="border-top-right">$ Total</th>
+                </tr>
+              </thead>
+              <tbody id="carrito-body">
+          
+              </tbody>
+              <tfoot id="footer">
+                <tr><td class="border-bottom-left border-bottom-right" colspan = 4>¡No hay ningun producto en el carrito!</td></tr>
+              </tfoot>
+            </table>
           </ul>
-          <ul class="list-group mb-3" id="">
-            <li class="list-group-item d-flex justify-content-between bg-light" id="descuentoCarritoJS2"></li>
-            <li class="list-group-item d-flex justify-content-between bg-light" id="descuentoCarritoJS">
-              <div class="text-success" >
-                <h6 class="my-0">Codigo de descuento</h6>
-                <small>EJEMPLO CODIGO</small>
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between" id="sumaCarritoJS">
-              <strong><h6><span>Total</span></h6></strong>
 
-            </li>
-          </ul>
 
           <form class="card p-2">
             <div class="input-group">

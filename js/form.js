@@ -87,14 +87,6 @@ const footerCarrito = () => {
     const clonarFooterCarrito = plantillaFooter.cloneNode(true);
     fragment.appendChild(clonarFooterCarrito);
     tfootCarrito.appendChild(fragment);
-    //Vaciar carrito boton
-    const botonVaciar = document.getElementById("vaciar-tabla");
-    botonVaciar.addEventListener("click", () => {
-      carrito = {};
-      crearTabla(carrito);
-      footerCarrito();
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-    });
   }
 };
 
