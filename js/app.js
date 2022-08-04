@@ -1,71 +1,43 @@
 //Productos
-const productos = {
-  producto1: {
-    nombre: "Hamburguesa",
-    precio: "1200",
-    descripcion: "Hamburguesa simple.",
-    imagen: "./img/3.jpg",
-    alt: "Hamburguesa simple",
-  },
-  producto2: {
-    nombre: "Hamburguesa con papas fritas",
-    precio: "1800",
-    descripcion: "Hamburguesa con una porción de papas fritas.",
-    imagen: "./img/12.jpg",
-    alt: "Hamburguesa con papas fritas",
-  },
-  producto3: {
-    nombre: "Pin de pollo",
-    precio: "500",
-    descripcion: "Pin de pollo con salsa barbacoa.",
-    imagen: "./img/14.jpg",
-    alt: "Pin de pollo",
-  },
-  producto4: {
-    nombre: "Canape clasico",
-    precio: "500",
-    descripcion: "Canape clasico de pollo, tomate, lechuga.",
-    imagen: "./img/15.jpeg",
-    alt: "Canape clasico",
-  },
-  producto5: {
-    nombre: "Carne al asador",
-    precio: "800",
-    descripcion: "Carne al asador",
-    imagen: "./img/16.jpeg",
-    alt: "Carne al asador",
-  },
-  producto6: {
-    nombre: "Ensalada de lechuga y tomate",
-    precio: "500",
-    descripcion: "Ensalada de lechuga y tomate.",
-    imagen: "./img/17.jpg",
-    alt: "Ensalada de lechuga y tomate",
-  },
+document.addEventListener("DOMContentLoaded", () => {
+  fetchData();
+});
+
+const fetchData = async () => {
+  try {
+    const res = await fetch("./api.json");
+    const data = await res.json();
+    pintarCards(data);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const plantillaProd = document.getElementById("template-prod").content;
 const contenedorProd = document.querySelector(".contenedor-productos");
 const fragment = document.createDocumentFragment();
 
-//Agregar productos al HTML
-Object.values(productos).forEach((producto) => {
-  plantillaProd.querySelector(".div-info .nombre-prod").textContent =
-    producto.nombre;
-  plantillaProd.querySelector(".div-precio-boton .precio").textContent =
-    producto.precio;
-  plantillaProd.querySelector(".div-info .descripcion-prod").textContent =
-    producto.descripcion;
-  plantillaProd
-    .querySelector(".contenedor-img img")
-    .setAttribute("alt", producto.alt);
-  plantillaProd
-    .querySelector(".contenedor-img img")
-    .setAttribute("src", producto.imagen);
-  const clonar = plantillaProd.cloneNode(true);
-  fragment.appendChild(clonar);
-});
-contenedorProd.appendChild(fragment);
+const pintarCards = (productos) => {
+  console.log(productos);
+  //Agregar productos al HTML
+  Object.values(productos).forEach((producto) => {
+    plantillaProd.querySelector(".div-info .nombre-prod").textContent =
+      producto.nombre;
+    plantillaProd.querySelector(".div-precio-boton .precio").textContent =
+      producto.precio;
+    plantillaProd.querySelector(".div-info .descripcion-prod").textContent =
+      producto.descripcion;
+    plantillaProd
+      .querySelector(".contenedor-img img")
+      .setAttribute("alt", producto.alt);
+    plantillaProd
+      .querySelector(".contenedor-img img")
+      .setAttribute("src", producto.imagen);
+    const clonar = plantillaProd.cloneNode(true);
+    fragment.appendChild(clonar);
+  });
+  contenedorProd.appendChild(fragment);
+};
 
 //Compra carrito
 const templateTabla = document.getElementById(
