@@ -128,13 +128,6 @@ const footerCarrito = () => {
     fragment.appendChild(clonarFooterCarrito);
     tfootCarrito.appendChild(fragment);
     //Vaciar carrito boton
-    const botonVaciar = document.getElementById("vaciar-tabla");
-    botonVaciar.addEventListener("click", () => {
-      carrito = {};
-      crearTabla(carrito);
-      footerCarrito();
-      localStorage.setItem("carrito", JSON.stringify(carrito));
-    });
   }
 };
 
@@ -239,6 +232,16 @@ function vaciarBtn() {
           "Tu carrito ha sido vaciado",
           "success"
         );
+        const botonVaciar = document.getElementById("vaciar-tabla");
+        botonVaciar.addEventListener("click", () => {
+          carrito = {};
+          crearTabla(carrito);
+          footerCarrito();
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+        }),
+          (carrito = {});
+        crearTabla(carrito);
+        footerCarrito();
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
