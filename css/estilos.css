@@ -434,6 +434,10 @@ td .button {
   color: #1da1f2;
 }
 
+.hide {
+  display: none;
+}
+
 .site-footer {
   background-color: #2a231f;
   padding: 0 0 20px;

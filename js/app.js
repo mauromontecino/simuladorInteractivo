@@ -18,9 +18,10 @@ const contenedorProd = document.querySelector(".contenedor-productos");
 const fragment = document.createDocumentFragment();
 
 const pintarCards = (productos) => {
-  console.log(productos);
+  //console.log(productos);
   //Agregar productos al HTML
   Object.values(productos).forEach((producto) => {
+    plantillaProd.querySelector(".card").classList.add(producto.categoria);
     plantillaProd.querySelector(".div-info .nombre-prod").textContent =
       producto.nombre;
     plantillaProd.querySelector(".div-precio-boton .precio").textContent =
@@ -35,6 +36,7 @@ const pintarCards = (productos) => {
       .setAttribute("src", producto.imagen);
     const clonar = plantillaProd.cloneNode(true);
     fragment.appendChild(clonar);
+    console.log(producto.categoria);
   });
   contenedorProd.appendChild(fragment);
 };
@@ -225,4 +227,27 @@ function vaciarBtn() {
         );
       }
     });
+}
+
+//Filtrar por categoria
+
+function filterProduct(value) {
+  //Selecciona las card
+  let elements = document.querySelectorAll(".card");
+  //Por cada Card
+  elements.forEach((element) => {
+    //Muestra todo
+    if (value == "Todo") {
+      element.classList.remove("hide");
+    } else {
+      //Checkea que tenga la categoria
+      if (element.classList.contains(value)) {
+        //Muestra el producto segun categoria
+        element.classList.remove("hide");
+      } else {
+        //Oculta las otras categorias
+        element.classList.add("hide");
+      }
+    }
+  });
 }
