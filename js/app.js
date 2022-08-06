@@ -21,7 +21,9 @@ const pintarCards = (productos) => {
   //console.log(productos);
   //Agregar productos al HTML
   Object.values(productos).forEach((producto) => {
-    plantillaProd.querySelector(".card").classList.add(producto.categoria);
+    plantillaProd
+      .querySelector(".card")
+      .setAttribute("name", producto.categoria);
     plantillaProd.querySelector(".div-info .nombre-prod").textContent =
       producto.nombre;
     plantillaProd.querySelector(".div-precio-boton .precio").textContent =
@@ -36,7 +38,7 @@ const pintarCards = (productos) => {
       .setAttribute("src", producto.imagen);
     const clonar = plantillaProd.cloneNode(true);
     fragment.appendChild(clonar);
-    console.log(producto.categoria);
+    //console.log(producto.categoria);
   });
   contenedorProd.appendChild(fragment);
 };
@@ -233,21 +235,24 @@ function vaciarBtn() {
 
 function filterProduct(value) {
   //Selecciona las card
-  let elements = document.querySelectorAll(".card");
+  let elements = document.querySelectorAll(`[name="${value}"]`);
   //Por cada Card
+  console.log(elements);
   elements.forEach((element) => {
-    //Muestra todo
-    if (value == "Todo") {
+    //Checkea que tenga la categoria
+    if (element.classList.contains(value)) {
+      //Muestra el producto segun categoria
       element.classList.remove("hide");
     } else {
-      //Checkea que tenga la categoria
-      if (element.classList.contains(value)) {
-        //Muestra el producto segun categoria
-        element.classList.remove("hide");
-      } else {
-        //Oculta las otras categorias
-        element.classList.add("hide");
-      }
+      //Oculta las otras categorias
+      element.classList.add("hide");
     }
+  });
+}
+//Muestra todo el producto
+function showAll() {
+  let aux = document.querySelectorAll(`[class="card card-mod hide"]`);
+  aux.forEach((e) => {
+    e.classList.remove("hide");
   });
 }
