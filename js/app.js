@@ -237,19 +237,17 @@ function filterProduct(value) {
   //Selecciona las card
   let elements = document.querySelectorAll(`[name="${value}"]`);
   //Por cada Card
-  console.log(elements);
+  let aux = document.querySelectorAll(".card");
+  aux.forEach((element) => {
+    //Oculta las otras categorias
+    element.classList.add("hide");
+  });
   elements.forEach((element) => {
-    //Checkea que tenga la categoria
-    if (element.classList.contains(value)) {
-      //Muestra el producto segun categoria
-      element.classList.remove("hide");
-    } else {
-      //Oculta las otras categorias
-      element.classList.add("hide");
-    }
+    //Muestra la categoria
+    element.classList.remove("hide");
   });
 }
-//Muestra todo el producto
+//Muestra todos los productos
 function showAll() {
   let aux = document.querySelectorAll(`[class="card card-mod hide"]`);
   aux.forEach((e) => {
