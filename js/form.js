@@ -90,19 +90,8 @@ function toggleCart() {
 }
 
 //LocalStorage
-
 let aux = localStorage.getItem("carrito");
-
-// if (!aux) {
-//   carrito = {};
-// } else {
-//   carrito = JSON.parse(aux);
-// }
 
 let carrito = JSON.parse(aux) || {};
 
 crearTabla(carrito);
-
-//!aux ? (carrito = {}) : (carrito = JSON.parse(aux));
-
-//localStorage.setItem("carrito", JSON.stringify(carrito));

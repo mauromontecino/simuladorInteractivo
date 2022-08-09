@@ -18,7 +18,6 @@ const contenedorProd = document.querySelector(".contenedor-productos");
 const fragment = document.createDocumentFragment();
 
 const pintarCards = (productos) => {
-  //console.log(productos);
   //Agregar productos al HTML
   Object.values(productos).forEach((producto) => {
     plantillaProd
@@ -38,7 +37,6 @@ const pintarCards = (productos) => {
       .setAttribute("src", producto.imagen);
     const clonar = plantillaProd.cloneNode(true);
     fragment.appendChild(clonar);
-    //console.log(producto.categoria);
   });
   contenedorProd.appendChild(fragment);
 };
@@ -103,7 +101,6 @@ const footerCarrito = () => {
     const clonarFooterCarrito = plantillaFooter.cloneNode(true);
     fragment.appendChild(clonarFooterCarrito);
     tfootCarrito.appendChild(fragment);
-    //Vaciar carrito boton
   }
 };
 
@@ -153,27 +150,13 @@ function toggleCart() {
 }
 
 //LocalStorage
-
 let aux = localStorage.getItem("carrito");
-
-// if (!aux) {
-//   carrito = {};
-// } else {
-//   carrito = JSON.parse(aux);
-// }
 
 let carrito = JSON.parse(aux) || {};
 
 crearTabla(carrito);
 
-//!aux ? (carrito = {}) : (carrito = JSON.parse(aux));
-
-//localStorage.setItem("carrito", JSON.stringify(carrito));
-
-////////////////////////////////////////////////////////////////////////////////
-
 //Toastify Agregar al Carrito
-
 function successBtn() {
   Toastify({
     text: "¡Se agregó al carrito!",
@@ -182,7 +165,6 @@ function successBtn() {
 }
 
 //Sweet Alert Vaciar Carrito
-
 function vaciarBtn() {
   const swalWithBootstrapButtons = Swal.mixin({
     customClass: {
@@ -218,10 +200,7 @@ function vaciarBtn() {
           (carrito = {});
         crearTabla(carrito);
         footerCarrito();
-      } else if (
-        /* Read more about handling dismissals below */
-        result.dismiss === Swal.DismissReason.cancel
-      ) {
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
         swalWithBootstrapButtons.fire(
           "Cancelado",
           "Tu carrito esta seguro :)",
@@ -232,7 +211,6 @@ function vaciarBtn() {
 }
 
 //Filtrar por categoria
-
 function filterProduct(value) {
   //Selecciona las card
   let elements = document.querySelectorAll(`[name="${value}"]`);
